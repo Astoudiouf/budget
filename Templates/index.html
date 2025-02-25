@@ -1,0 +1,103 @@
+{% extends "base.html" %} {% block content %}
+<div class="w-full max-h-0 text-black text-5xl text-center my-8 gap-y-2 font-bold">
+  <h1><span class="text-emerald-900 text-9xl">B</span><span class="text-yellow-500 text-7xl">UDGET</span></h1>
+  <h3 class="text-xl font-light text text-emerald-900">Gestion du budget</h3>
+</div>
+
+<div class="flex justify-center align-center gap-x-20">
+  <div class="max-w-max max-h-full shadow-xl rounded-md text-center mx-10 my-40 ">
+   <h2 class="text-3xl bg-emerald-900 w-96 h-16 my-5 text-slate-100"> budget</h2>
+   <h3 class="text-3xl bg-inherit w-96 h-20 ">{{  total_revenu }}</h3>
+  </div>
+  <div class="max-w-max max-h-full shadow-xl rounded-md text-center mx-10 my-40 ">
+    <h2 class="text-3xl bg-emerald-900 w-96 h-16 my-5 text-slate-100"> Depenses</h2>
+      <h3 class="text-3xl bg-inherit w-96 h-20 "> {{  total_depense }}</h3>
+   </div>
+   <div class="max-w-max max-h-full shadow-xl rounded-md text-center mx-10 my-40 ">
+    <h2 class="text-3xl bg-emerald-900 w-96 h-16 my-5 text-slate-100"> Solde</h>
+    <h3 class="text-3xl bg-inherit w-96 h-20 ">{{ total_revenu - total_depense }} </h3>
+   </div> 
+  </div> 
+
+<div class="2">
+  <h2 class="text-2xl my-5 mx-80 text-yellow-500">LISTE DES DEPENSES</h2>
+  <table class="mx-60 my-5 w-4/5">
+    <thead>
+      <tr class="bg-emerald-900 text-white rounded-xl w-96 h-16">
+        <th class="w-96 h-16 rounded-md">TITRE</th>
+
+        <th class="w-96 h-16 rounded-md">MONTANT</th>
+
+        <th class="w-96 h-16 rounded-md">ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for depense in depenses %}
+      <tr>
+        <td class="text-center border-inherit border-solid border-2 h-16">
+          {{depense.titre}}
+        </td>
+        <td class="text-center border-inherit border-solid border-2 h-16">
+          {{depense.montant}}
+        </td>
+        <td  class="text-center border-inherit border-solid border-2 h-16">
+          <button class="w-40 h-12 bg-red-500 text-white text-center text-3xl rounded-md m-4">
+          <a href="/delete/{{ depense.id }}/">Supprimer</a>
+          </button>
+        </td>
+        <td  class="text-center border-inherit border-solid border-2 h-16">
+          <button class="w-40 h-12 bg-red-500 text-white text-center text-3xl rounded-md m-4">
+          <a href="/update/{{'depense.id'}}">Modifier</a>
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+      <td class="text-center border-inherit border-solid border-2 h-16 text-yellow-500">
+        AJOUTER DEPENSES<button class="bg-transparent hover:bg-gray-100 placeholder-yellow-500 font-bold py-2 px-4 rounded">
+          <a href="add_depense"><i class="ri-add-circle-line mx-1"></i></a>
+      </button></td>
+    </tbody>
+  </table>
+  <h2 class="text-2xl my-5 mx-80 text-yellow-500">LISTE DES REVENUS</h2>
+  <table class="table my-10 mx-60 w-4/5">
+    <thead>
+      <tr class="bg-emerald-900 text-white rounded-xl w-96 h-16">
+        <th class="w-96 h-16 rounded-md">TITRE</th>
+
+        <th class="w-96 h-16 rounded-md">MONTANT</th>
+
+        <th class="w-96 h-16 rounded-md">ACTIONS</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for revenu in revenus %}
+      <tr>
+        <td class="text-center border-inherit border-solid border-2 h-16">
+          {{revenu.titre}}
+        </td>
+        <td class="text-center border-inherit border-solid border-2 h-16">
+          {{revenu.montant}}
+        </td>
+        <td class="text-center border-inherit border-solid border-2 h-16 ">
+          <button
+            class="w-40 h-12 bg-red-500 text-white text-center text-3xl rounded-md m-4 border-2"
+          >
+            <a href="/delete/{{ revenu['id'] }}">Supprimer</a>
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+      <td
+        class="text-center border-inherit border-solid border-2 h-16 text-yellow-500"
+      >
+        AJOUTER REVENU
+        <butto class="bg-transparent hover:bg-gray-100 placeholder-yellow-500 font-bold py-2 px-4 rounded">
+        <a href="add_revenu"><i class="ri-add-circle-line mx-1"></i></a>
+        </button>
+      </td>
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}
