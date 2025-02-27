@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="w-full max-h-0 text-black text-5xl text-center my-8 gap-y-2 font-bold">
+  <h1>
+    <span class="text-emerald-900 text-9xl">B</span
+    ><span class="text-yellow-500 text-7xl">UDGET</span></h1>
+    <h3 class="text-xl font-light text text-emerald-900">Gestion du budget</h3>
+</div>
+<div class="my-48">
+  <h1 class="text-emerald-900 text-4xl mx-80 my-8 text-center">Modifier Revenu</h1>
+  <div class="mx-80 my-3 flex flex-col justify-center items-center">
+      <form method="POST" action="{{ url_for('update_revenu', id=revenu.id) }}">
+        <label for="titre" class="text-emerald-900 text-2xl">titre :</label><br />
+        <input id="titre" name="titre" class="text-center my-8 w-96 h-14 border-2" placeholder="salaire" value="{{ revenu.titre }}" required></input><br /><br />
+        <label for="montant" class="text-emerald-900 text-2xl">montant :</label><br />
+        <input id="montant" name="montant" class="text-center my-8 w-96 h-14 border-2" placeholder="15000C CFA" value="{{ revenu.montant }}" required></input><br /><br />
+        <button
+          type="submit"
+          class="w-96 h-14 bg-emerald-900 text-white text-center text-3xl rounded-md my-5">
+          Ajouter
+        </button>
+      </form>
+</div>
+
+{% endblock content %}

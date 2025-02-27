@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,23 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <title class="text_2xl text-gray-700 text-center">Budget</title>
 </head>
+
 <body>
   <div class="container">
-     {% block content %}
+    <!-- flask flush message -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes text-center">
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}
 
-     {% endblock content %}
+    {% endblock content %}
   </div>
 </body>
+
 </html>

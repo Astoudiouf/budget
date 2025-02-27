@@ -6,18 +6,18 @@
 
 <div class="flex justify-center align-center gap-x-20">
   <div class="max-w-max max-h-full shadow-xl rounded-md text-center mx-10 my-40 ">
-   <h2 class="text-3xl bg-emerald-900 w-96 h-16 my-5 text-slate-100"> budget</h2>
-   <h3 class="text-3xl bg-inherit w-96 h-20 ">{{  total_revenu }}</h3>
+    <h2 class="text-3xl bg-emerald-900 w-96 h-16 my-5 text-slate-100"> budget</h2>
+    <h3 class="text-3xl bg-inherit w-96 h-20 ">{{  total_revenu }}</h3>
   </div>
   <div class="max-w-max max-h-full shadow-xl rounded-md text-center mx-10 my-40 ">
     <h2 class="text-3xl bg-emerald-900 w-96 h-16 my-5 text-slate-100"> Depenses</h2>
-      <h3 class="text-3xl bg-inherit w-96 h-20 "> {{  total_depense }}</h3>
-   </div>
-   <div class="max-w-max max-h-full shadow-xl rounded-md text-center mx-10 my-40 ">
+    <h3 class="text-3xl bg-inherit w-96 h-20 "> {{  total_depense }}</h3>
+  </div>
+  <div class="max-w-max max-h-full shadow-xl rounded-md text-center mx-10 my-40 ">
     <h2 class="text-3xl bg-emerald-900 w-96 h-16 my-5 text-slate-100"> Solde</h>
-    <h3 class="text-3xl bg-inherit w-96 h-20 ">{{ total_revenu - total_depense }} </h3>
-   </div> 
-  </div> 
+      <h3 class="text-3xl bg-inherit w-96 h-20 ">{{ total_revenu - total_depense }} </h3>
+  </div>
+</div>
 
 <div class="2">
   <h2 class="text-2xl my-5 mx-80 text-yellow-500">LISTE DES DEPENSES</h2>
@@ -32,30 +32,30 @@
       </tr>
     </thead>
     <tbody>
-      {% for depense in depenses %}
+      {% for Depense in depense %}
       <tr>
         <td class="text-center border-inherit border-solid border-2 h-16">
-          {{depense.titre}}
+          {{Depense.titre}}
         </td>
         <td class="text-center border-inherit border-solid border-2 h-16">
-          {{depense.montant}}
+          {{Depense.montant}}
         </td>
-        <td  class="text-center border-inherit border-solid border-2 h-16">
+        <td class="text-center border-inherit border-solid border-2 h-16">
           <button class="w-40 h-12 bg-red-500 text-white text-center text-3xl rounded-md m-4">
-          <a href="/delete/{{ depense.id }}/">Supprimer</a>
+            <a href="/Depense/{{ Depense.id }}/delete">Supprimer</a>
+          </button>
+          <button class="w-40 h-12 bg-red-500 text-white text-center text-3xl rounded-md m-4">
+            <a href="/update_depense/{{Depense.id}}/">Modifier</a>
           </button>
         </td>
-        <td  class="text-center border-inherit border-solid border-2 h-16">
-          <button class="w-40 h-12 bg-red-500 text-white text-center text-3xl rounded-md m-4">
-          <a href="/update/{{'depense.id'}}">Modifier</a>
-          </button>
-        </td>
+
       </tr>
       {% endfor %}
       <td class="text-center border-inherit border-solid border-2 h-16 text-yellow-500">
-        AJOUTER DEPENSES<button class="bg-transparent hover:bg-gray-100 placeholder-yellow-500 font-bold py-2 px-4 rounded">
+        AJOUTER DEPENSES<button
+          class="bg-transparent hover:bg-gray-100 placeholder-yellow-500 font-bold py-2 px-4 rounded">
           <a href="add_depense"><i class="ri-add-circle-line mx-1"></i></a>
-      </button></td>
+        </button></td>
     </tbody>
   </table>
   <h2 class="text-2xl my-5 mx-80 text-yellow-500">LISTE DES REVENUS</h2>
@@ -71,30 +71,29 @@
     </thead>
 
     <tbody>
-      {% for revenu in revenus %}
+      {% for Revenu in revenu %}
       <tr>
         <td class="text-center border-inherit border-solid border-2 h-16">
-          {{revenu.titre}}
+          {{Revenu.titre}}
         </td>
         <td class="text-center border-inherit border-solid border-2 h-16">
-          {{revenu.montant}}
+          {{Revenu.montant}}
         </td>
         <td class="text-center border-inherit border-solid border-2 h-16 ">
-          <button
-            class="w-40 h-12 bg-red-500 text-white text-center text-3xl rounded-md m-4 border-2"
-          >
-            <a href="/delete/{{ revenu['id'] }}">Supprimer</a>
+          <button class="w-40 h-12 bg-red-500 text-white text-center text-3xl rounded-md m-4 border-2">
+            <a href="/Revenu/{{ Revenu.id }}/delete">Supprimer</a>
+          </button>
+          <button class="w-40 h-12 bg-red-500 text-white text-center text-3xl rounded-md m-4 border-2">
+            <a href="/update_revenu/{{ Revenu.id}}/">Modifier</a>
           </button>
         </td>
       </tr>
       {% endfor %}
-      <td
-        class="text-center border-inherit border-solid border-2 h-16 text-yellow-500"
-      >
+      <td class="text-center border-inherit border-solid border-2 h-16 text-yellow-500">
         AJOUTER REVENU
         <butto class="bg-transparent hover:bg-gray-100 placeholder-yellow-500 font-bold py-2 px-4 rounded">
-        <a href="add_revenu"><i class="ri-add-circle-line mx-1"></i></a>
-        </button>
+          <a href="add_revenu"><i class="ri-add-circle-line mx-1"></i></a>
+          </button>
       </td>
     </tbody>
   </table>
